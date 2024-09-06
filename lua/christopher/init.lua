@@ -3,4 +3,4 @@ require("christopher.remap")
 require("christopher.lazy")
 
 local colors = require("christopher.colors")
-colors.kanagawa()
+colors.tokyonight()

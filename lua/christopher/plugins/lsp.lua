@@ -11,6 +11,12 @@ return {
             -- LSP
             local telescope = require('telescope.builtin')
 
+            local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
+            for type, icon in pairs(signs) do
+                local hl = "DiagnosticSign" .. type
+                vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+            end
+
             vim.keymap.set('n', '<leader>vd', vim.diagnostic.open_float)
 
             vim.api.nvim_create_autocmd("LspAttach", {
@@ -18,7 +24,7 @@ return {
                 callback = function(event)
                     local opts = { buffer = event.buf }
                     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-                    vim.keymap.set('n', 'gd', function() telescope.lsp_definitions({ jump_type = 'vsplit' }) end, opts)
+                    vim.keymap.set('n', 'gd', function() telescope.lsp_definitions() end, opts)
                     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
                     vim.keymap.set('n', 'gi', telescope.lsp_implementations, opts)
                     vim.keymap.set('n', '<leader>D', telescope.lsp_type_definitions, opts)
@@ -86,7 +92,7 @@ return {
                         })(entry, vim_item)
                         local strings = vim.split(kind.kind, "%s", { trimempty = true })
                         kind.kind = " " .. strings[1] .. " "
-                        kind.menu = " " .. string.lower(strings[2])
+                        kind.menu = " " .. strings[2]
                         return kind
                     end,
                 },

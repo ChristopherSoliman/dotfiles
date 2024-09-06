@@ -2,6 +2,7 @@ return {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.8',
     dependencies = {
+        'nvim-telescope/telescope-ui-select.nvim',
         'nvim-lua/plenary.nvim',
     },
 
@@ -13,8 +14,13 @@ return {
             builtin.grep_string({ search = vim.fn.input("Grep > ") });
         end)
 
-        require('telescope').setup({
-
+        local telescope = require("telescope")
+        telescope.setup({
+            ["ui-select"] = {
+                extension = {
+                    require("telescope.themes").get_dropdown()
+                }
+            },
             defaults = {
                 layout_strategy = 'horizontal',
                 layout_config = {
@@ -34,5 +40,6 @@ return {
                 color_devicons = true,
             },
         })
+        telescope.load_extension("ui-select")
     end
 }
