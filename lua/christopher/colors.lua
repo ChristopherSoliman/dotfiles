@@ -1,4 +1,5 @@
 local M = {}
+
 function M:catppuccin()
     require('catppuccin').setup({
         flavour = "mocha", -- latte, frappe, macchiato, mocha
@@ -77,8 +78,13 @@ end
 function M:nordic()
     local C = require 'nordic.colors'
     require('nordic').setup({
+        telescope = {
+            style = 'flat',
+        },
+        italic_comments = false,
         override = {
-            TelescopePromptBorder = { bg = C.black2, fg = C.black2 },
+            TelescopeBorder = { bg = C.bg_float, fg = C.bg_float },
+            TelescopePromptBorder = { bg = C.blanocombineck2, fg = C.black2 },
             TelescopeResultsBorder = { bg = C.bg_float, fg = C.bg_float },
             TelescopePreviewBorder = { bg = C.bg_float, fg = C.bg_float },
 
@@ -86,10 +92,53 @@ function M:nordic()
             TelescopeSelection = { bg = C.gray1, fg = C.yellow.bright },
             TelescopeSelectionCaret = { fg = C.bg_float },
 
-            CmpPmenu = { bg = C.bg_float },
-            CmpBorder = { bg = C.bg_float, fg = C.bg_float },
+            CmpItemMenu = { fg = C.gray3, italic = false },
 
-            Delimeter = { italic = false }
+            CmpItemAbbrDeprecated = { fg = C.gray3, bg = "NONE", strikethrough = true, link = '' },
+
+            CmpItemAbbrMatch = { fg = C.blue2, bg = "NONE", bold = true, link = '' },
+            CmpItemAbbrMatchFuzzy = { fg = C.blue2, bg = "NONE", bold = true, link = '' },
+
+            CmpItemKindField = { fg = C.white3, bg = C.blue0, link = '' },
+            CmpItemKindProperty = { fg = C.white3, bg = C.blue0, link = '' },
+            CmpItemKindEvent = { fg = C.white3, bg = C.blue0, link = '' },
+
+            CmpItemKindKeyword = { fg = C.white3, bg = C.red.dim, link = '' },
+
+            CmpItemKindText = { fg = C.white3, bg = C.green.dim, link = '' },
+            CmpItemKindEnum = { fg = C.white3, bg = C.green.dim, link = '' },
+
+            CmpItemKindConstant = { fg = C.white3, bg = C.magenta.dim, link = '' },
+            CmpItemKindConstructor = { fg = C.white3, bg = C.magenta.dim, link = '' },
+            CmpItemKindReference = { fg = C.white3, bg = C.magenta.dim, link = '' },
+
+            CmpItemKindFunction = { fg = C.white3, bg = C.yellow.dim, link = '' },
+            CmpItemKindStruct = { fg = C.white3, bg = C.yellow.dim, link = '' },
+            CmpItemKindClass = { fg = C.white3, bg = C.yellow.dim, link = '' },
+            CmpItemKindOperator = { fg = C.white3, bg = C.yellow.dim, link = '' },
+            CmpItemKindModule = { fg = C.white3, bg = C.yellow.dim, link = '' },
+
+            CmpItemKindVariable = { fg = C.gray3, bg = C.white0, link = '' },
+            CmpItemKindFile = { fg = C.gray3, bg = C.white0, link = '' },
+
+            CmpItemKindUnit = { fg = C.white3, bg = C.orange.dim, link = '' },
+            CmpItemKindSnippet = { fg = C.white3, bg = C.orange.dim, link = '' },
+            CmpItemKindFolder = { fg = C.white3, bg = C.orange.dim, link = '' },
+
+            CmpItemKindMethod = { fg = C.white3, bg = C.blue0, link = '' },
+            CmpItemKindEnumMember = { fg = C.white3, bg = C.blue0, link = '' },
+            CmpItemKindValue = { fg = C.white3, bg = C.blue0, link = '' },
+
+            CmpItemKindInterface = { fg = C.white3, bg = C.cyan.dim, link = '' },
+            CmpItemKindColor = { fg = C.white3, bg = C.cyan.dim, link = '' },
+            CmpItemKindTypeParameter = { fg = C.white3, bg = C.cyan.dim, link = '' },
+
+            PmenuSel = { bg = C.white_alt },
+            Pmenu = { bg = C.bg_float },
+            FloatBorder = { bg = C.bg_float, fg = C.bg_float },
+            Delimiter = { italic = false },
+            ['@parameter'] = { italic = false },
+
         }
     })
     vim.cmd.colorscheme('nordic')
@@ -119,7 +168,7 @@ function M:tokyonight()
             --CMP
             hl.CmpPmenu = { bg = c.bg_dark }
             hl.CmpItemMenu = { fg = "#565f89", italic = true }
-            --[[
+
             hl.CmpItemKindSnippet = { fg = c.bg_dark, bg = c.magenta }
             hl.CmpItemKindKeyword = { fg = c.bg_dark, bg = c.red }
             hl.CmpItemKindText = { fg = c.bg_dark, bg = c.cyan }
@@ -146,7 +195,6 @@ function M:tokyonight()
             hl.CmpItemKindOperator = { fg = c.bg_dark, bg = c.blue }
             hl.CmpItemKindTypeParameter = { fg = c.bg_dark, bg = c.blue }
             hl.CmpItemKindCopilot = { fg = c.bg_dark, bg = c.cyan }
-            ]] --
         end,
     })
     vim.cmd.colorscheme("tokyonight")
