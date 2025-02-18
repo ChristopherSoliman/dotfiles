@@ -78,64 +78,72 @@ end
 function M:nordic()
     local C = require 'nordic.colors'
     require('nordic').setup({
-        telescope = {
-            style = 'flat',
-        },
         italic_comments = false,
+        swap_backgrounds = true,
         override = {
-            TelescopeBorder = { bg = C.bg_float, fg = C.bg_float },
-            TelescopePromptBorder = { bg = C.blanocombineck2, fg = C.black2 },
-            TelescopeResultsBorder = { bg = C.bg_float, fg = C.bg_float },
-            TelescopePreviewBorder = { bg = C.bg_float, fg = C.bg_float },
+            -- TelescopeBorder = { bg = C.bg_float, fg = C.bg_float },
+            -- TelescopePromptBorder = { bg = C.bg_float, fg = C.bg_float },
+            -- TelescopeResultsBorder = { bg = C.bg_float, fg = C.bg_float },
+            -- TelescopePreviewBorder = { bg = C.bg_float, fg = C.bg_float },
+            --
+            -- TelescopeMatching = { fg = C.orange.bright },
+            -- TelescopeSelection = { bg = C.gray1, fg = C.yellow.bright },
+            -- TelescopeSelectionCaret = { fg = C.bg_float },
+            --
+            TelescopeNormal = { bg = C.black0 },
+            TelescopePromptNormal = { bg = C.black0 },
+            TelescopeResultsNormal = { bg = C.black0 },
+            TelescopePreviewNormal = { bg = C.black0 },
+
+            TelescopeBorder = { bg = C.black0, fg = C.black0 },
+            TelescopePromptBorder = { bg = C.black0, fg = C.black0 },
+            TelescopeResultsBorder = { bg = C.black0, fg = C.black0 },
+            TelescopePreviewBorder = { bg = C.black0, fg = C.black0 },
 
             TelescopeMatching = { fg = C.orange.bright },
             TelescopeSelection = { bg = C.gray1, fg = C.yellow.bright },
-            TelescopeSelectionCaret = { fg = C.bg_float },
-
-            CmpItemMenu = { fg = C.gray3, italic = false },
+            TelescopeSelectionCaret = { bg = C.bg_float, fg = C.bg_float },
+            TelescopePromptPrefix = { bg = C.black0, fg = C.orange.bright },
 
             CmpItemAbbrDeprecated = { fg = C.gray3, bg = "NONE", strikethrough = true, link = '' },
+            CmpItemAbbrMatch = { fg = C.blue0, bg = "NONE", bold = true, link = '' },
+            CmpItemAbbrMatchFuzzy = { link = 'CmpItemAbbrMatch' },
 
-            CmpItemAbbrMatch = { fg = C.blue2, bg = "NONE", bold = true, link = '' },
-            CmpItemAbbrMatchFuzzy = { fg = C.blue2, bg = "NONE", bold = true, link = '' },
+            CmpItemKindValue = { fg = C.blue1, bg = "NONE", link = '' },
+            CmpItemKindVariable = { link = "CmpItemKindValue" },
+            CmpItemKindEnumMember = { link = 'CmpItemKindMethod' },
+            CmpItemKindField = { link = 'CmpItemKindMethod' },
+            CmpItemKindProperty = { link = 'CmpItemKindMethod' },
+            CmpItemKindEvent = { link = 'CmpItemKindMethod' },
 
-            CmpItemKindField = { fg = C.white3, bg = C.blue0, link = '' },
-            CmpItemKindProperty = { fg = C.white3, bg = C.blue0, link = '' },
-            CmpItemKindEvent = { fg = C.white3, bg = C.blue0, link = '' },
+            CmpItemKindClass = { fg = C.yellow.dim, bg = "NONE", link = '' },
+            CmpItemKindStruct = { link = "CmpItemKindClass" },
+            CmpItemKindOperator = { link = "CmpItemKindClass" },
+            CmpItemKindModule = { link = "CmpItemKindClass" },
 
-            CmpItemKindKeyword = { fg = C.white3, bg = C.red.dim, link = '' },
+            CmpItemKindText = { fg = C.green.dim, bg = "None", link = '' },
+            CmpItemKindEnum = { link = "CmpItemKindText" },
 
-            CmpItemKindText = { fg = C.white3, bg = C.green.dim, link = '' },
-            CmpItemKindEnum = { fg = C.white3, bg = C.green.dim, link = '' },
+            CmpItemKindFunction = { fg = C.magenta.dim, bg = "NONE", link = '' },
+            CmpItemKindMethod = { link = "CmpItemKindFunction" },
+            CmpItemKindConstant = { link = "CmpItemKindFunction" },
+            CmpItemKindConstructor = { link = "CmpItemKindFunction" },
+            CmpItemKindReference = { link = "CmpItemKindFunction" },
 
-            CmpItemKindConstant = { fg = C.white3, bg = C.magenta.dim, link = '' },
-            CmpItemKindConstructor = { fg = C.white3, bg = C.magenta.dim, link = '' },
-            CmpItemKindReference = { fg = C.white3, bg = C.magenta.dim, link = '' },
+            CmpItemKindKeyword = { fg = C.fg, bg = "NONE", link = '' },
+            CmpItemKindFile = { link = "CmpItemKindKeyword" },
 
-            CmpItemKindFunction = { fg = C.white3, bg = C.yellow.dim, link = '' },
-            CmpItemKindStruct = { fg = C.white3, bg = C.yellow.dim, link = '' },
-            CmpItemKindClass = { fg = C.white3, bg = C.yellow.dim, link = '' },
-            CmpItemKindOperator = { fg = C.white3, bg = C.yellow.dim, link = '' },
-            CmpItemKindModule = { fg = C.white3, bg = C.yellow.dim, link = '' },
+            CmpItemKindUnit = { fg = C.orange.dim, bg = "NONE", link = '' },
+            CmpItemKindSnippet = { link = "CmpItemKindUnit" },
+            CmpItemKindFolder = { link = "CmpItemKindUnit" },
 
-            CmpItemKindVariable = { fg = C.gray3, bg = C.white0, link = '' },
-            CmpItemKindFile = { fg = C.gray3, bg = C.white0, link = '' },
-
-            CmpItemKindUnit = { fg = C.white3, bg = C.orange.dim, link = '' },
-            CmpItemKindSnippet = { fg = C.white3, bg = C.orange.dim, link = '' },
-            CmpItemKindFolder = { fg = C.white3, bg = C.orange.dim, link = '' },
-
-            CmpItemKindMethod = { fg = C.white3, bg = C.blue0, link = '' },
-            CmpItemKindEnumMember = { fg = C.white3, bg = C.blue0, link = '' },
-            CmpItemKindValue = { fg = C.white3, bg = C.blue0, link = '' },
-
-            CmpItemKindInterface = { fg = C.white3, bg = C.cyan.dim, link = '' },
-            CmpItemKindColor = { fg = C.white3, bg = C.cyan.dim, link = '' },
-            CmpItemKindTypeParameter = { fg = C.white3, bg = C.cyan.dim, link = '' },
+            CmpItemKindInterface = { fg = C.cyan.dim, bg = "NONE", link = '' },
+            CmpItemKindColor = { link = "CmpItemKindInterface" },
+            CmpItemKindTypeParameter = { link = "CmpItemKindInterface" },
 
             PmenuSel = { bg = C.white_alt },
-            Pmenu = { bg = C.bg_float },
-            FloatBorder = { bg = C.bg_float, fg = C.bg_float },
+            Pmenu = { bg = C.black0 },
+            FloatBorder = { bg = C.black0, fg = C.black0 },
             Delimiter = { italic = false },
             ['@parameter'] = { italic = false },
 

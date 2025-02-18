@@ -39,6 +39,9 @@ return {
 
             local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities();
             local default_setup = function(server)
+                if server == "tsserver" then
+                    server = "ts_ls"
+                end
                 require("lspconfig")[server].setup({
                     capabilities = lsp_capabilities,
                 })
@@ -46,7 +49,7 @@ return {
 
             require('mason').setup()
             require('mason-lspconfig').setup({
-                ensure_installed = { 'lua_ls', 'cssls', 'tsserver', 'html' },
+                ensure_installed = { 'lua_ls', 'cssls', 'ts_ls', 'rust_analyzer', 'html' },
                 handlers = {
                     default_setup,
                 },
@@ -55,12 +58,12 @@ return {
             --CMP
             local cmp = require('cmp')
             local lspkind = require('lspkind')
-            local cmp_autopairs = require('nvim-autopairs.completion.cmp');
-
-            cmp.event:on(
-                "confirm_done",
-                cmp_autopairs.on_confirm_done()
-            )
+            -- local cmp_autopairs = require('nvim-autopairs.completion.cmp');
+            --
+            -- cmp.event:on(
+            --     "confirm_done",
+            --     cmp_autopairs.on_confirm_done()
+            -- )
 
             cmp.setup({
                 sources = {
@@ -77,23 +80,26 @@ return {
                 window = {
                     completion = cmp.config.window.bordered({
                         winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
-                        border = "none",
-                        side_padding = 0,
-                        col_offset = -3,
+                        -- border = "none",
+                        -- side_padding = 2,
+                        -- col_offset = 0,
                     })
                 },
                 formatting = {
-                    fields = { "kind", "abbr", "menu" },
+                    fields = { "abbr", "kind" },
                     format = function(entry, vim_item)
                         local kind = lspkind.cmp_format({
+                            preset = "codicons",
                             mode = "symbol_text",
                             show_labelDetails = true,
                             maxwidth = 50,
                         })(entry, vim_item)
                         local strings = vim.split(kind.kind, "%s", { trimempty = true })
-                        kind.kind = " " .. strings[1] .. " "
-                        kind.menu = "   " .. strings[2]
-                        return kind
+                        vim_item.kind = string.format("%s  %s", strings[1], strings[2])
+                        -- kind.kind = "" .. strings[1] .. ""
+                        -- kind.menu = "" .. strings[2]
+                        -- return kind
+                        return vim_item
                     end,
                 },
             })

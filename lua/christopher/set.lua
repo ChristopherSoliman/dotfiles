@@ -20,8 +20,9 @@ vim.opt.scrolloff = 8
 
 vim.opt.updatetime = 50
 
-vim.opt.colorcolumn = "80"
-vim.opt.wrap = false
+vim.opt.colorcolumn = '80'
+vim.api.nvim_create_autocmd('FileType', { pattern = 'rust', command = 'set colorcolumn=100' })
+
 
 vim.g.mapleader = " "
 
