@@ -79,7 +79,6 @@ function M:nordic()
     local C = require 'nordic.colors'
     require('nordic').setup({
         italic_comments = false,
-        swap_backgrounds = true,
         override = {
             -- TelescopeBorder = { bg = C.bg_float, fg = C.bg_float },
             -- TelescopePromptBorder = { bg = C.bg_float, fg = C.bg_float },
