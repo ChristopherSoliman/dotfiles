@@ -80,29 +80,29 @@ function M:nordic()
     require('nordic').setup({
         italic_comments = false,
         override = {
-            -- TelescopeBorder = { bg = C.bg_float, fg = C.bg_float },
-            -- TelescopePromptBorder = { bg = C.bg_float, fg = C.bg_float },
-            -- TelescopeResultsBorder = { bg = C.bg_float, fg = C.bg_float },
-            -- TelescopePreviewBorder = { bg = C.bg_float, fg = C.bg_float },
-            --
-            -- TelescopeMatching = { fg = C.orange.bright },
-            -- TelescopeSelection = { bg = C.gray1, fg = C.yellow.bright },
-            -- TelescopeSelectionCaret = { fg = C.bg_float },
-            --
-            TelescopeNormal = { bg = C.black0 },
-            TelescopePromptNormal = { bg = C.black0 },
-            TelescopeResultsNormal = { bg = C.black0 },
-            TelescopePreviewNormal = { bg = C.black0 },
-
-            TelescopeBorder = { bg = C.black0, fg = C.black0 },
-            TelescopePromptBorder = { bg = C.black0, fg = C.black0 },
-            TelescopeResultsBorder = { bg = C.black0, fg = C.black0 },
-            TelescopePreviewBorder = { bg = C.black0, fg = C.black0 },
+            TelescopeBorder = { bg = C.bg_float, fg = C.bg_float },
+            TelescopePromptBorder = { bg = C.bg_float, fg = C.bg_float },
+            TelescopeResultsBorder = { bg = C.bg_float, fg = C.bg_float },
+            TelescopePreviewBorder = { bg = C.bg_float, fg = C.bg_float },
 
             TelescopeMatching = { fg = C.orange.bright },
             TelescopeSelection = { bg = C.gray1, fg = C.yellow.bright },
-            TelescopeSelectionCaret = { bg = C.bg_float, fg = C.bg_float },
-            TelescopePromptPrefix = { bg = C.black0, fg = C.orange.bright },
+            TelescopeSelectionCaret = { fg = C.bg_float },
+
+            -- TelescopeNormal = { bg = C.black0 },
+            -- TelescopePromptNormal = { bg = C.black0 },
+            -- TelescopeResultsNormal = { bg = C.black0 },
+            -- TelescopePreviewNormal = { bg = C.black0 },
+            --
+            -- TelescopeBorder = { bg = C.black0, fg = C.black0 },
+            -- TelescopePromptBorder = { bg = C.black0, fg = C.black0 },
+            -- TelescopeResultsBorder = { bg = C.black0, fg = C.black0 },
+            -- TelescopePreviewBorder = { bg = C.black0, fg = C.black0 },
+            --
+            -- TelescopeMatching = { fg = C.orange.bright },
+            -- TelescopeSelection = { bg = C.gray1, fg = C.yellow.bright },
+            -- TelescopeSelectionCaret = { bg = C.bg_float, fg = C.bg_float },
+            TelescopePromptPrefix = { bg = C.bg_float, fg = C.orange.bright },
 
             CmpItemAbbrDeprecated = { fg = C.gray3, bg = "NONE", strikethrough = true, link = '' },
             CmpItemAbbrMatch = { fg = C.blue0, bg = "NONE", bold = true, link = '' },
