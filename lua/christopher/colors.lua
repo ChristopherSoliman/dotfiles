@@ -79,74 +79,76 @@ function M:nordic()
     local C = require 'nordic.colors'
     require('nordic').setup({
         italic_comments = false,
-        override = {
-            TelescopeBorder = { bg = C.bg_float, fg = C.bg_float },
-            TelescopePromptBorder = { bg = C.bg_float, fg = C.bg_float },
-            TelescopeResultsBorder = { bg = C.bg_float, fg = C.bg_float },
-            TelescopePreviewBorder = { bg = C.bg_float, fg = C.bg_float },
+        on_highlight = function(highlights, palette)
+        --override = {
+            highlights.TelescopeBorder = { bg = palette.bg_float, fg = C.bg_float }
+            highlights.TelescopePromptBorder = { bg = palette.bg_float, fg = C.bg_float }
+            highlights.TelescopeResultsBorder = { bg = palette.bg_float, fg = C.bg_float }
+            highlights.TelescopePreviewBorder = { bg = palette.bg_float, fg = C.bg_float }
 
-            TelescopeMatching = { fg = C.orange.bright },
-            TelescopeSelection = { bg = C.gray1, fg = C.yellow.bright },
-            TelescopeSelectionCaret = { fg = C.bg_float },
+            highlights.TelescopeMatching = { fg = palette.orange.bright }
+            highlights.TelescopeSelection = { bg = palette.gray1, fg = C.yellow.bright }
+            highlights.TelescopeSelectionCaret = { fg = palette.bg_float }
 
-            -- TelescopeNormal = { bg = C.black0 },
-            -- TelescopePromptNormal = { bg = C.black0 },
-            -- TelescopeResultsNormal = { bg = C.black0 },
-            -- TelescopePreviewNormal = { bg = C.black0 },
+            -- TelescopeNormal = { bg = palette.black0 }
+            -- TelescopePromptNormal = { bg = palette.black0 }
+            -- TelescopeResultsNormal = { bg = palette.black0 }
+            -- TelescopePreviewNormal = { bg = palette.black0 }
             --
-            -- TelescopeBorder = { bg = C.black0, fg = C.black0 },
-            -- TelescopePromptBorder = { bg = C.black0, fg = C.black0 },
-            -- TelescopeResultsBorder = { bg = C.black0, fg = C.black0 },
-            -- TelescopePreviewBorder = { bg = C.black0, fg = C.black0 },
+            -- TelescopeBorder = { bg = palette.black0, fg = C.black0 }
+            -- TelescopePromptBorder = { bg = palette.black0, fg = C.black0 }
+            -- TelescopeResultsBorder = { bg = palette.black0, fg = C.black0 }
+            -- TelescopePreviewBorder = { bg = palette.black0, fg = C.black0 }
             --
-            -- TelescopeMatching = { fg = C.orange.bright },
-            -- TelescopeSelection = { bg = C.gray1, fg = C.yellow.bright },
-            -- TelescopeSelectionCaret = { bg = C.bg_float, fg = C.bg_float },
-            TelescopePromptPrefix = { bg = C.bg_float, fg = C.orange.bright },
+            -- TelescopeMatching = { fg = palette.orange.bright }
+            -- TelescopeSelection = { bg = palette.gray1, fg = C.yellow.bright }
+            -- TelescopeSelectionCaret = { bg = palette.bg_float, fg = C.bg_float }
+            highlights.TelescopePromptPrefix = { bg = palette.bg_float, fg = C.orange.bright }
 
-            CmpItemAbbrDeprecated = { fg = C.gray3, bg = "NONE", strikethrough = true, link = '' },
-            CmpItemAbbrMatch = { fg = C.blue0, bg = "NONE", bold = true, link = '' },
-            CmpItemAbbrMatchFuzzy = { link = 'CmpItemAbbrMatch' },
+            highlights.CmpItemAbbrDeprecated = { fg = palette.gray3, bg = "NONE", strikethrough = true, link = '' }
+            highlights.CmpItemAbbrMatch = { fg = palette.blue0, bg = "NONE", bold = true, link = '' }
+            highlights.CmpItemAbbrMatchFuzzy = { link = 'CmpItemAbbrMatch' }
 
-            CmpItemKindValue = { fg = C.blue1, bg = "NONE", link = '' },
-            CmpItemKindVariable = { link = "CmpItemKindValue" },
-            CmpItemKindEnumMember = { link = 'CmpItemKindMethod' },
-            CmpItemKindField = { link = 'CmpItemKindMethod' },
-            CmpItemKindProperty = { link = 'CmpItemKindMethod' },
-            CmpItemKindEvent = { link = 'CmpItemKindMethod' },
+            highlights.CmpItemKindValue = { fg = palette.blue1, bg = "NONE", link = '' }
+            highlights.CmpItemKindVariable = { link = "CmpItemKindValue" }
+            highlights.CmpItemKindEnumMember = { link = 'CmpItemKindMethod' }
+            highlights.CmpItemKindField = { link = 'CmpItemKindMethod' }
+            highlights.CmpItemKindProperty = { link = 'CmpItemKindMethod' }
+            highlights.CmpItemKindEvent = { link = 'CmpItemKindMethod' }
 
-            CmpItemKindClass = { fg = C.yellow.dim, bg = "NONE", link = '' },
-            CmpItemKindStruct = { link = "CmpItemKindClass" },
-            CmpItemKindOperator = { link = "CmpItemKindClass" },
-            CmpItemKindModule = { link = "CmpItemKindClass" },
+            highlights.CmpItemKindClass = { fg = palette.yellow.dim, bg = "NONE", link = '' }
+            highlights.CmpItemKindStruct = { link = "CmpItemKindClass" }
+            highlights.CmpItemKindOperator = { link = "CmpItemKindClass" }
+            highlights.CmpItemKindModule = { link = "CmpItemKindClass" }
 
-            CmpItemKindText = { fg = C.green.dim, bg = "None", link = '' },
-            CmpItemKindEnum = { link = "CmpItemKindText" },
+            highlights.CmpItemKindText = { fg = palette.green.dim, bg = "None", link = '' }
+            highlights.CmpItemKindEnum = { link = "CmpItemKindText" }
 
-            CmpItemKindFunction = { fg = C.magenta.dim, bg = "NONE", link = '' },
-            CmpItemKindMethod = { link = "CmpItemKindFunction" },
-            CmpItemKindConstant = { link = "CmpItemKindFunction" },
-            CmpItemKindConstructor = { link = "CmpItemKindFunction" },
-            CmpItemKindReference = { link = "CmpItemKindFunction" },
+            highlights.CmpItemKindFunction = { fg = palette.magenta.dim, bg = "NONE", link = '' }
+            highlights.CmpItemKindMethod = { link = "CmpItemKindFunction" }
+            highlights.CmpItemKindConstant = { link = "CmpItemKindFunction" }
+            highlights.CmpItemKindConstructor = { link = "CmpItemKindFunction" }
+            highlights.CmpItemKindReference = { link = "CmpItemKindFunction" }
 
-            CmpItemKindKeyword = { fg = C.fg, bg = "NONE", link = '' },
-            CmpItemKindFile = { link = "CmpItemKindKeyword" },
+            highlights.CmpItemKindKeyword = { fg = palette.fg, bg = "NONE", link = '' }
+            highlights.CmpItemKindFile = { link = "CmpItemKindKeyword" }
 
-            CmpItemKindUnit = { fg = C.orange.dim, bg = "NONE", link = '' },
-            CmpItemKindSnippet = { link = "CmpItemKindUnit" },
-            CmpItemKindFolder = { link = "CmpItemKindUnit" },
+            highlights.CmpItemKindUnit = { fg = palette.orange.dim, bg = "NONE", link = '' }
+            highlights.CmpItemKindSnippet = { link = "CmpItemKindUnit" }
+            highlights.CmpItemKindFolder = { link = "CmpItemKindUnit" }
 
-            CmpItemKindInterface = { fg = C.cyan.dim, bg = "NONE", link = '' },
-            CmpItemKindColor = { link = "CmpItemKindInterface" },
-            CmpItemKindTypeParameter = { link = "CmpItemKindInterface" },
+            highlights.CmpItemKindInterface = { fg = palette.cyan.dim, bg = "NONE", link = '' }
+            highlights.CmpItemKindColor = { link = "CmpItemKindInterface" }
+            highlights.CmpItemKindTypeParameter = { link = "CmpItemKindInterface" }
 
-            PmenuSel = { bg = C.white_alt },
-            Pmenu = { bg = C.black0 },
-            FloatBorder = { bg = C.black0, fg = C.black0 },
-            Delimiter = { italic = false },
-            ['@parameter'] = { italic = false },
+            highlights.PmenuSel = { bg = palette.white_alt }
+            highlights.Pmenu = { bg = palette.black0 }
+            highlights.FloatBorder = { bg = palette.black0, fg = C.black0 }
+            highlights.Delimiter = { italic = false }
+            highlights['@parameter'] = { italic = false }
 
-        }
+        end
+        --}
     })
     vim.cmd.colorscheme('nordic')
 end
