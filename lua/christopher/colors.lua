@@ -141,7 +141,7 @@ function M:nordic()
             highlights.CmpItemKindColor = { link = "CmpItemKindInterface" }
             highlights.CmpItemKindTypeParameter = { link = "CmpItemKindInterface" }
 
-            highlights.PmenuSel = { bg = palette.white_alt }
+            highlights.PmenuSel = { bg = palette.gray3 }
             highlights.Pmenu = { bg = palette.black0 }
             highlights.FloatBorder = { bg = palette.black0, fg = C.black0 }
             highlights.Delimiter = { italic = false }
